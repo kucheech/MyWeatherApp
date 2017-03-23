@@ -26,17 +26,12 @@ import com.github.pwittchen.swipe.library.SwipeListener;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.gson.Gson;
-
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-
 import static com.google.android.gms.location.LocationServices.*;
 
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
@@ -49,11 +44,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     private TextView textViewHourlyHeader;
     private TextView textViewHourlyData;
     private final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 111;
-    private double lat, lon;
+    double lat = 0, lon = 0;
     private WebView webViewCurrently;
     private WebView webViewHourly;
     private Swipe swipe;
-    private int currentHour = 0;
+    int currentHour = 0;
     ArrayList<DarkSkyData> darkSkyDataHourlyData;
 
     @Override
@@ -81,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                     .build();
         }
 
-
+        //requirement for using Dark Sky API
         ((TextView) findViewById(R.id.textViewAPILink))
                 .setMovementMethod(LinkMovementMethod.getInstance());
     }
@@ -250,8 +245,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         } else {
             Toast.makeText(this, "Could not retrieve Location information", Toast.LENGTH_LONG).show();
         }
-
-
     }
 
     private void updateHourlyDataDisplay() {
@@ -296,14 +289,14 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         return super.dispatchTouchEvent(event);
     }
 
-    private String getTimeString(long v) {
+    public String getTimeString(long v) {
         Date date = new Date(v*1000);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss");
         return formatter.format(date);
     }
 
 
-    private String getTimeString2(long v) {
+    public String getTimeString2(long v) {
         Date date = new Date(v*1000);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh a");
         return formatter.format(date);
