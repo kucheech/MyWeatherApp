@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MyWeatherApp</string>
+    <string name="apiweblink">
+    <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
+    </string>
+    <string name="apikey">955d1106a98dc813d5dae05d3ebe4642</string>
+    <string name="currently">currently</string>
+    <string name="hourly">hourly</string>
+</resources>

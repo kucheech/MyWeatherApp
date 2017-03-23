@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="icon1" width="32" height="32"></canvas>
+
+    <script src="skycons.js"></script>
+
+    <script>
+        var skycons = new Skycons({ "color": "black", "resizeClear": true });
+        // on Android, a nasty hack is needed: {"resizeClear": true}
+
+        // you can add a canvas by it's ID...
+        skycons.add("icon1", "wind");
+
+        // start animation!
+        skycons.play();
+
+        function setIcon(condition) {
+            skycons.set("icon1", condition);
+        }        
+    </script>
+</body>
+
+</html>
